@@ -1,0 +1,15 @@
+{
+  "name": "cstyle-js",
+  "version": "1.0.0",
+  "description": "C-Style data structures implemented into JavaScript",
+  "main": "CStyle.js",
+  "scripts": {
+    "test": "echo 'No tests specified'; false"
+  },
+  "repository": {
+    "type": "git",
+    "url": "cstyle-js"
+  },
+  "author": "axtan",
+  "license": "ISC"
+}
