@@ -1,7 +1,8 @@
 {
   "name": "cstyle-js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "C-Style data structures implemented into JavaScript",
+  "homepage": "https://github.com/axtan64/cstyle-js",
   "main": "CStyle.js",
   "scripts": {
     "test": "echo 'No tests specified'; false"

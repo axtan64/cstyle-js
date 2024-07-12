@@ -229,20 +229,30 @@ class PtrArray {
     /**
      * Set the buffer that the array is using 
      * @param {Uint8Array} buffer the buffer to represent this array
+     * @param {boolean} pad (OPTIONAL) whether to pad / trim the array to the expected size
      */
-    setBuffer(buffer) {
+    setBuffer(buffer, pad=true) {
         let expectedLength = Math.ceil(this.length * this.type.size / BYTE_LEN);
 
-        if(buffer != undefined) {
-            if(!(buffer instanceof Uint8Array)) {
+        let b = buffer;
+
+        if(b != undefined) {
+            if(!(b instanceof Uint8Array)) {
                 throw new Error("Given buffer was not a Uint8Array")
             }
-            if(buffer.length < expectedLength) {
-                throw new Error(`Given buffer was not of expected length. Expected length ${expectedLength}, got ${byteArray.length}`);
+            if(pad) {
+                if(b.length > expectedLength) {
+                    b = b.slice(0, expectedLength);
+                } else if(b.length < expectedLength) {
+                    b = new Uint8Array(expectedLength);
+                    b.set(buffer);
+                }
+            } else if (b.length < expectedLength) {
+                throw new Error(`Given buffer was not of expected length. Expected length ${expectedLength}, got ${b.length}`);
             }
         }
 
-        this.buffer = buffer || new Uint8Array(expectedLength);
+        this.buffer = b || new Uint8Array(expectedLength);
     }
 
     /**
